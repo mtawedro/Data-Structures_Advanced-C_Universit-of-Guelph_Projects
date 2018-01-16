@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void)
+{
+/* a[0] to a[n-1] is the array to sort */
+ 2 
+int i,j;
+ 3 
+int n;
+ 4 
+
+ 5 
+/* advance the position through the entire array */
+ 6 
+/*   (could do j < n-1 because single element is also min element) */
+ 7 
+for (j = 0; j < n-1; j++) 
+ 8 
+  {
+ 9 
+    /* find the min element in the unsorted a[j .. n-1] */
+10 
+
+11 
+    /* assume the min is the first element */
+12 
+    int iMin = j;
+13 
+    /* test against elements after j to find the smallest */
+14 
+    for (i = j+1; i < n; i++) {
+15 
+        /* if this element is less, then it is the new minimum */
+16 
+        if (a[i] < a[iMin]) {
+17 
+            /* found new minimum; remember its index */
+18 
+            iMin = i;
+19 
+        }
+20 
+    }
+21 
+
+22 
+    if (iMin != j) 
+23 
+    {
+24 
+        swap(a[j], a[iMin]);
+25 
+    }
+26 
+}
+
+return 0;
+
+}

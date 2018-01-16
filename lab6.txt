@@ -1,0 +1,119 @@
+1)
+Big-O notation is a theoretical/mathematical measure of the performance or complexity of an algorithm with time or memory needed, given
+the problem size n, which is usually the number of elements that is passed. Big O specifically refers to the worst-case scenario, and can be used to describe 
+the execution time required or the space used (e.g. in memory or on disk) by an algorithm as it considers the 'upper bound' on computational time. 
+
+2)O(N + N) = O(2N) = O(N)
+b) O(N^2)
+
+3) 
+a)When your accessing the known position the array doesnt have to keep searching trough until elemnt is found, it will go staright to the 
+disired index therefore the complexity time would be O(1) or O(c)
+b)when inserting in an unsorted array, If the list is unsorted, search has to be at least linear. You must look at each item at least once,yet 
+in an unsorted array the insert operation is faster as compared to sorted array because we doesn't have to care about the position at 
+which the element to be placed, thus calcualations are 0(n) and worst-> O(n)
+c) In the case, elements are inserted at the end, middle, or beg dependent on where to insert, Best case:  O(1)  worst-> 0(N)      
+
+
+
+
+4
+a) When your ALL delteing an item from a stack you would get the front of the list and delete and repeat until list is NULL therefore
+deleting itiem from stack calcualtes to O(N) since You must look at each item at least once.
+b)Since in an stack you insert from the front, you already have a disered position to place in which this case would be O(1) 
+even in the worst case, the data will still be inserted in front so therefore worst -> O(1)
+
+5)
+
+a) In this case, object top(): returns the last inserted element without removing it, here your only accessing the front because thats 
+where the last inserted data will always be , thus the known position in the queue, which in this case is the front doesnt have to keep searching 
+through each element in list,thus you already have a disered position to place in which this case calcuatations are top is O(1). 
+Even in the worst case, the data will still be inserted in front so therefore worst O(1)
+**b) Here, new additions to a list made to the back of the queue, thus enqueue best if there's no nodes in list -> 0(1) and Worst -> 0(1) where you dont have to go through the queue to insert, you just insert at back
+**c) with memory allocation Worst -> O(N+1)   best-> O(1+1) -> O(2) -> O(N)
+**d) Each enqueue there is a dequeue 0(1) + O(1) =  2 * 0(1) = 0(1)
+
+
+
+6) 
+searchItiem is inaltilzied to the single targeted itiem declare a ptr *current of type Node that points to the head of the linked list to illeriate 
+through the list. while current does not reach the end of the list, current -> data is equal to searchItiem , the single targeted item, return current->data(
+which is was value taht was matched. else increment the pointer current = current ->next to move onto the next node. if nothing was found  return NULL 
+
+
+Node  *current = list->head; //pointer to traverse the list //1
+	    
+    while(current != NULL)				  // 1* N
+    {
+       if(current->data == searchItem)			// 1 * N (maybe more)
+          
+		return current->data;                 // 1
+       else
+          current = current->next;		   //1 * N
+    }
+      
+    return NULL;				// 1
+
+
+Operations: 3 + 3*N = O(N)
+
+Worst-Case: O(N) -> Target item not found 
+Average-Case: O(N/2) -> O(N) -> Target item at mid-point 
+Best-Case: O(1) -> Target item is the first item
+
+
+7)**using 2 stacks
+searchItiem is inaltilzied to the single targeted itiem and a ptr *current of type Stack that points to data, while s1 -> count reaches to the end of the stack to illeriate 
+through the list, if current -> data from stack 1 is equal to searchItiem , the single targeted item, return 1 else stack 2 is pointing to the same heade equals current
+value that was not matched
+
+int find(Stack *s1, void *searchItem)
+{
+
+	Stack *s2;					  			 
+	    
+    while(s1->count != 0)				   // 1* N
+    {
+       
+	int current = s1->list->head->data		  //1
+	
+	if(current == searchItem)			// 1 * N (maybe more)
+          
+		return 1;              		     // 1
+       else
+         s2->list->head = current;		   //1 * N
+    }
+      
+    return 0;				// 1
+}
+
+
+Operations: 3 + 3*N = O(N)
+
+Best-Case: O(1) -> Target item is the first item 
+Average-Case: O(N/2) -> O(N) -> Target item at mid-point 
+Worst-Case: O(N) -> Target item is not found until it reaches end 
+
+
+
+8)
+If the list is unsorted, search has to be at least linear. You must look at each item at least once, because anything 
+you haven't looked at might be less than what you've already seen. To add on,  you iterate through your array, save the position 
+(or value itself) of the least known element and compare every element to that. if the element is lower, the save that instead. At the end you
+ have the position (or value) of the least element. Thus, complexity time--- 0(n) As already stated in the (theoretically) general case finding the 
+minimum or maximum of a unsorted collection of values requires you to look at each value (thus O(N)), because if you wouldn't look at a value, that value
+ could be greater than all other values of your collection.
+
+1. Best Case :     1 9 2 3 5    ->  Min is the first number -> O(1)
+2. Worst Case :  9 5 3 2 1    ->  Sorted number decreasing order -> O(N)
+3. Average Case : 9 2 1 3 5  -> Many different options here
+
+
+other complexity time when change if the problem was extended to find the K smallest values, where K <= 
+N. Ex) Array = [1, 4, 44, 3, 2] 
+
+
+since, there is an k amount of itiems that needs to be considered, the ilertration through the list will be:
+
+1. Worst Case :  1 4 44 3 2    -> when array is unsorted, in which sorting operation (bubble sort) would be executed, with time complixity of -> O(N^2) 
+
